@@ -22,11 +22,11 @@ on:
           - IPQ807X-WIFI-NO
           - TEST
       SOURCE:
-        default: 'seacdr/immortalwrt'
+        default: 'VIKINGYFY/immortalwrt'
         required: true
         type: choice
         options:
-          - seacdr/immortalwrt
+          - VIKINGYFY/immortalwrt
           - immortalwrt/immortalwrt
           - LiBwrt/openwrt-6.x
           - qosmio/openwrt-ipq
