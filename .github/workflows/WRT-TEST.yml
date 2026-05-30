@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
     inputs:
       CONFIG:
-        default: 'MEDIATEK-WIFI-YES'
+        default: 'IPQ807X-WIFI-YES'
         required: true
         type: choice
         options:
@@ -24,7 +24,7 @@ on:
           - X86
           - TEST
       SOURCE:
-        default: 'VIKINGYFY/immortalwrt'
+        default: 'LiBwrt/openwrt-6.x'
         required: true
         type: choice
         options:
@@ -33,7 +33,7 @@ on:
           - LiBwrt/openwrt-6.x
           - qosmio/openwrt-ipq
       BRANCH:
-        default: 'main'
+        default: '25.12-nss'
         required: true
         type: string
       PACKAGE:
@@ -60,13 +60,13 @@ jobs:
       #默认主题
       WRT_THEME: aurora
       #默认主机名
-      WRT_NAME: OWRT
+      WRT_NAME: MI
       #默认WIFI名称
-      WRT_SSID: OWRT
+      WRT_SSID: MI
       #默认WIFI密码
       WRT_WORD: 12345678
       #默认地址
-      WRT_IP: 192.168.10.1
+      WRT_IP: 192.168.21.1
       #默认密码，仅作提示，修改无用
       WRT_PW: 无
       #源码链接

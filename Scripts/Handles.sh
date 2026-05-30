@@ -92,3 +92,10 @@ if [ -f "$RUST_FILE" ]; then
 
 	cd $PKG_PATH && echo "rust has been fixed!"
 fi
+
+#修复openvpn编译失败
+find "$GITHUB_WORKSPACE/wrt/" -type d -path "*/net/openvpn" | while read -r dir; 
+	echo " "
+    echo "Deleting: $dir"
+    rm -rf "$dir"
+done
