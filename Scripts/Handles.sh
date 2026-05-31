@@ -94,8 +94,8 @@ if [ -f "$RUST_FILE" ]; then
 fi
 
 #修复openvpn编译失败
-find "$GITHUB_WORKSPACE/wrt/" -type d -path "*/net/openvpn" | while read -r dir; 
-	echo " "
+find "$GITHUB_WORKSPACE/wrt/" -type d -path "*/net/openvpn" | while read -r dir; do
+    echo " "
     echo "Deleting: $dir"
     rm -rf "$dir"
 done
