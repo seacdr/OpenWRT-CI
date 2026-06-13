@@ -1,0 +1,43 @@
+# SPDX-License-Identifier: MIT
+# Copyright (C) 2026 VIKINGYFY
+
+name: Clean
+
+on:
+  #自动清理：每周一早上4点
+  #schedule:
+  #  - cron: 0 20 * * 0
+  #手动清理
+  workflow_dispatch:
+
+permissions: write-all
+
+env:
+  GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete old Releases and Workflows
+        uses: ophub/delete-releases-workflows@main
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_releases: true
+          releases_keep_latest: 0
+          delete_tags: true
+          delete_workflows: true
+          workflows_keep_day: 0
+
+      - name: Delete GitHub Actions Cache
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CACHE_COUNT=$(gh cache list --limit 1 2>/dev/null | wc -l)
+
+          if [ "$CACHE_COUNT" -gt 0 ]; then
+            echo "Deleting caches..."
+            gh cache delete --all
+          else
+            echo "No caches found."
+          fi
